@@ -6,7 +6,7 @@ include "config.php";
 $province_string = file_get_contents('province.json');
 $province_object = json_decode($province_string);
 
-print_r($province_object);
+//print_r($province_object);
 
 $regioni_array= array_map(function($provincia){
     return $provincia->regione;
@@ -15,9 +15,15 @@ $regioni_array= array_map(function($provincia){
 $regioni_unique = array_unique($regioni_array);
 sort($regioni_unique);
 
-print_r($regioni_unique);
+$province_array=array_map(function($provincia){
+    return $provincia->nome;
+}, $province_object);
 
+$sigle_array=array_map(function($provincia){
+    return $provincia->sigla;
+}, $province_object);
 
+//print_r($sigle_array);
 
 
 
@@ -38,18 +44,18 @@ $dsn = ("mysql:host=".DB_HOST.";dbname=".DB_NAME);
 //     throw $e;
 //   }
 
-//   try {
-//     $conn = new PDO($dsn,DB_USER,DB_PASSWORD);
-//     foreach($regioni_unique as $regione){
-//         $regione = addslashes($regione);
-//         $sql="INSERT INTO regioni (nome) VALUES('$regione')";
-//         echo $sql."\n";
-//         $conn->query($sql);
-//     }
-//     echo "Connected successfully"; 
-//   } catch(\Throwable $e) {
-//     throw $e;
-//   }
+  try {
+    $conn = new PDO($dsn,DB_USER,DB_PASSWORD);
+    foreach($province_array as $provincia){
+        $provincia = addslashes($provincia);
+        $sql="INSERT INTO province (nome_provincia) VALUES('$regione')";
+        echo $sql."\n";
+        $conn->query($sql);
+    }
+    echo "Connected successfully"; 
+  } catch(\Throwable $e) {
+    throw $e;
+  }
 
 
 
