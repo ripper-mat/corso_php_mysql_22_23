@@ -16,9 +16,6 @@ $regioni_unique = array_unique($regioni_array);
 sort($regioni_unique);
 
 
-
-;
-
 //print_r($sigle_array);
 
 
