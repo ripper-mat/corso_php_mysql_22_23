@@ -1,9 +1,7 @@
--- Active: 1678177957079@@127.0.0.1@3306@form_in_php
+-- Active: 1678437261958@@127.0.0.1@3306@form_in_php
 Insert into regioni (nome)
 VALUES ('Abruzzo');
 
-select * from regioni;
-Truncate TABLE regioni;
 
 CREATE TABLE province (  
     id_provincia int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -12,3 +10,13 @@ CREATE TABLE province (
     regione_id int,
     Foreign Key (regione_id) REFERENCES regioni(regione_id)
 ) ;
+
+CREATE TABLE regioni (  
+    regione_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255));
+
+select * from regioni;
+
+select * from province;
+
+Truncate TABLE regioni;
