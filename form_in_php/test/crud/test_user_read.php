@@ -10,6 +10,7 @@ include "form_in_php/test/test_autoload.php";
 (new PDO(DB_DSN,DB_USER,DB_PASSWORD))->query("TRUNCATE TABLE user;");
 $crud = new UserCRUD();
 $user = new User();
+$user2 = new User();
 // 
 $user->first_name = "Mario";
 $user->last_name = "Rosso";
@@ -20,6 +21,16 @@ $user->regione_id = 9;
 $user->provincia_id = 15;
 $user->username = "mariorossi@email.com";
 $user->password = md5('Password');
+
+$user2->first_name = "Pippo";
+$user2->last_name = "Verde";
+$user2->birth_city = "Napoli";
+$user2->birthday = "2000-10-25";
+$user2->gender = "M";
+$user2->regione_id = 9;
+$user2->provincia_id = 15;
+$user2->username = "pippoverde@email.com";
+$user2->password = md5('Password');
 
 $result = $crud->read(); //7 array | vuoto 
 if($result === false ){
@@ -47,15 +58,19 @@ if(is_array($result) && count($result) === 1 ){
 };
 
 
-$crud->delete(1);
-$result = $crud->read(1);
-if($result === false){
-    echo "\nutente con id 1 è stato eliminato\n";
-}
+// $crud->delete(1);
+// $result = $crud->read(1);
+// if($result === false){
+//     echo "\nutente con id 1 è stato eliminato\n";
+// }
 
 // TODO: inserire un secondo utente per  testare la cancellazione singola
 
 var_dump($result);
 
-
-
+$result = $crud->update(1, $user2);
+if($result == 1){
+    echo "\nutente aggiornato\n";
+}else{
+    echo "\nutente non aggiornato";
+}
