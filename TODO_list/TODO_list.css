@@ -1,0 +1,90 @@
+/* Include the padding and border in an element's total width and height */
+* .body{
+    /* box-sizing: border-box; */
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Style the header */
+.header {
+    background-color: #64c15b60;
+    padding: 30px 40px;
+    color: rgb(0, 0, 0);
+    display: flex;
+  }
+
+  .picName{
+      display: flex;
+      align-items: end;
+    }
+
+    .pic{
+        margin-right: 10px;
+    }
+    
+    /* Style the input */
+    input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 0;
+        width: 75%;
+        padding: 10px;
+        float: left;
+        font-size: 16px;
+    }
+
+    /* Style the "Add" button */
+    .addBtn {
+        padding: 10px;
+        width: 25%;
+        background: #d9d9d9;
+        color: #555;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 0;
+    }
+
+    .filters{
+        /* border: 1px solid red; */
+        display: flex;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 40px;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        /* width: 45%; */
+        
+    }
+
+    .filterBtns{
+        display: flex;
+        width: 100%;
+    }
+    
+    .dateFilter{
+        border: 1px solid rgb(0, 0, 0);
+        /* margin-left: 40px; */
+        width: 100%;
+
+    }
+    
+    .filterBtn{
+        width: 10%;
+        margin-right: 10px;
+        
+    }
+    
+    /* Style the list items */
+    .results {
+    /* border: 1px solid red; */
+  /* padding: 12px 8px 12px 40px; */
+  background: #eee;
+  font-size: 18px;
+  display: flex;
+  /* flex-direction: column; */
+  /* transition: 0.2s; */
+}
