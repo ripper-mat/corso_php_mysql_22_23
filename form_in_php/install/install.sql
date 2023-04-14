@@ -1,28 +1,3 @@
--- Active: 1678177957079@@127.0.0.1@3306@form_in_php
-Insert into regioni (nome)
-VALUES ('Abruzzo');
-
-
-CREATE TABLE province (  
-    id_provincia int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome_provincia VARCHAR(255),
-    sigla VARCHAR(5),
-    regione_id int,
-    Foreign Key (regione_id) REFERENCES regioni(regione_id)
-) ;
-
-CREATE TABLE regioni (  
-    regione_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255));
-
-select * from regioni;
-
-select * from province;
-
-select * from user;
-
-Truncate TABLE regioni;
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
@@ -53,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `provincia`;
-CREATE TABLE `provincia` (
+CREATE TABLE `province` (
   `provincia_id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `sigla` char(2) NOT NULL,
@@ -64,7 +39,7 @@ CREATE TABLE `provincia` (
 -- Dump dei dati per la tabella `provincia`
 --
 
-INSERT INTO `provincia` (`provincia_id`, `nome`, `sigla`, `regione_id`) VALUES
+INSERT INTO `province` (`provincia_id`, `nome`, `sigla`, `regione_id`) VALUES
 (1, 'Agrigento', 'AG', 15),
 (2, 'Alessandria', 'AL', 12),
 (3, 'Ancona', 'AN', 10),
@@ -241,7 +216,7 @@ CREATE TABLE `user` (
 --
 -- Indici per le tabelle `provincia`
 --
-ALTER TABLE `provincia`
+ALTER TABLE `province`
   ADD PRIMARY KEY (`provincia_id`);
 
 ALTER TABLE `user`
@@ -249,12 +224,10 @@ ALTER TABLE `user`
 
 ALTER TABLE user
 ADD UNIQUE (username);
--- ADD UNIQUE (first_name,last_name);
-
 --
 -- Indici per le tabelle `regione`
 --
-ALTER TABLE `regione`
+ALTER TABLE `regioni`
   ADD PRIMARY KEY (`regione_id`);
 
 --
@@ -264,7 +237,7 @@ ALTER TABLE `regione`
 --
 -- AUTO_INCREMENT per la tabella `provincia`
 --
-ALTER TABLE `provincia`
+ALTER TABLE `province`
   MODIFY `provincia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 ALTER TABLE `user`
@@ -272,7 +245,7 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT per la tabella `regione`
 --
-ALTER TABLE `regione`
+ALTER TABLE `regioni`
   MODIFY `regione_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 

@@ -4,7 +4,7 @@
 use crud\UserCRUD;
 use models\User;
 
-include "config.php";
+include "form_in_php/config.php";
 include "form_in_php/test/test_autoload.php";
 
 (new PDO(DB_DSN,DB_USER,DB_PASSWORD))->query("TRUNCATE TABLE user;");
@@ -68,9 +68,11 @@ if(is_array($result) && count($result) === 1 ){
 
 var_dump($result);
 
-$result = $crud->update(1, $user2);
+$result = $crud->update(3, $user2);
 if($result == 1){
     echo "\nutente aggiornato\n";
-}else{
-    echo "\nutente non aggiornato";
+}elseif($result>1){
+    echo "\ntroppi utenti aggiornati";
+}elseif($result==0){
+    echo "\nnessun utente aggiornato";
 }
