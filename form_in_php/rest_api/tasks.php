@@ -15,15 +15,57 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $task_id = filter_input(INPUT_GET, 'task_id');
         $user_id = filter_input(INPUT_GET, 'user_id');
         if (!is_null($task_id)) {
-            echo json_encode($crud->read($task_id));
+            $task= $crud->read($task_id);
+            if($task){
+
+                $response = [
+                    "data"=>[
+                        $task
+                    ],
+                       "status"=> 200
+                ];
+            }else{
+                http_response_code(404);
+                    
+                $response=[
+                    'errors' => [
+                        [
+                            'status' => 404,
+                            'title' => 'task non trovata',
+                            'details' => $task_id
+                        ]
+                    ]
+                ];
+            }
             
         }else if (!is_null($user_id)) {
-            echo json_encode($crud->readByUser($user_id));
-        }
-         else{
+            $tasks= $crud->readByUser($user_id);
+            if($tasks){
+            $response = [
+                "data"=>$tasks,
+                "status"=> 200
+            ];
+            }else{
+                http_response_code(404);
+                $response=[
+                    'errors' => [
+                        [
+                            'status' => 404,
+                            'title' => 'user non trovato',
+                            'details' => $user_id
+                        ]
+                    ]
+                ];
+            }
+            
+        } else{
             $tasks = $crud->read();
-            echo json_encode($tasks);
+            $response =[
+                "data"=> $tasks,
+                "status"=> 200
+            ];
         }
+        echo json_encode($response);
         break;
 
         case 'DELETE':

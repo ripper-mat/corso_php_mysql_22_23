@@ -76,8 +76,6 @@ class TaskCRUD {
             return $result;
 
         }
-       // $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class);
-        // echo "ciao sono ".User::class."\n";
         return $result;
     }
 
@@ -107,8 +105,6 @@ class TaskCRUD {
             return $result;
 
         }
-       // $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class);
-        // echo "ciao sono ".User::class."\n";
         return $result;
     }
 
