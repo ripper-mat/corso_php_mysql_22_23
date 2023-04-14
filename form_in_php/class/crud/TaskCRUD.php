@@ -24,9 +24,9 @@ class TaskCRUD {
         $stm->bindValue(':user_id',$user_id,\PDO::PARAM_INT);
         $stm->execute();
         }
-        if(!$user_fk){
-            echo "Impossibile creare una task per questo utente";
-        }
+        // if(!$user_fk){
+        //     echo "Impossibile creare una task per questo utente\n";
+        // }
         
     }
 

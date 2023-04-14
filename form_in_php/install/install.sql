@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `provincia`
 --
 
-DROP TABLE IF EXISTS `provincia`;
+DROP TABLE IF EXISTS `province`;
 CREATE TABLE `province` (
   `provincia_id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,

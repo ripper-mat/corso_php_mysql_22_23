@@ -87,7 +87,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
                     */
                     $response=[
-                        'errors' => 
+                        'data' => 
                         [
 
                             [
@@ -128,15 +128,31 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 // var_dump($user_id);               
                 
                 $task = Task::arrayToTask($request);
+                // var_dump($task);
                 $last_id = $crud->create($task, $user_id);  
+                // var_dump($new_task);
+                $task->task_id=$last_id;
 
-                $task = (array) $task;
-                $task['task_id']= $last_id;
+                if(!is_null($new_task)){
+                // $task = (array) $task;
+                // $task['task_id']= $last_id;
                 $response=[
                     'data'=> $task,
                     'status' => 201
                 ];
+                }else{
+                    $response=[
+                        'errors' => [
+                            [
+                            'status' => 422,
+                            'title' => 'formato errato',
+                            'details' => $user_id
+                            ]
+                        ]
+                    ];
+                }
                 echo json_encode($response);
+                break;
 
 
 
