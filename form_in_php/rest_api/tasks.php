@@ -119,7 +119,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             break;
 
             case 'POST' :
-
+                try{
                 // print_r($_POST);
                 $input = file_get_contents('php://input');
                 $request = json_decode($input, true); //con true ottengo un array associativo
@@ -130,28 +130,29 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $task = Task::arrayToTask($request);
                 // var_dump($task);
                 $last_id = $crud->create($task, $user_id);  
-                // var_dump($new_task);
-                $task->task_id=$last_id;
+                // var_dump($last_id);
+                $task->task_id=$last_id["LAST_INSERT_ID()"];
 
-                if(!is_null($new_task)){
-                // $task = (array) $task;
-                // $task['task_id']= $last_id;
                 $response=[
                     'data'=> $task,
                     'status' => 201
                 ];
-                }else{
-                    $response=[
-                        'errors' => [
-                            [
+                echo json_encode($response);
+            }catch (\Throwable $th){
+
+                
+                $response=[
+                    'errors' => [
+                        [
                             'status' => 422,
                             'title' => 'formato errato',
                             'details' => $user_id
                             ]
                         ]
-                    ];
-                }
+                ];
                 echo json_encode($response);
+            }
+                
                 break;
 
 

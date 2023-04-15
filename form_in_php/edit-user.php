@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $crud->update($user, $_POST['user_id']);
         var_dump($_POST);
         //redirect
-        header("location: index-user.php");
+        header("location: index.php");
         }else{
             echo "Il form non è valido";
         }

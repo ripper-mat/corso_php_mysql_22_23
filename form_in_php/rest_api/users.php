@@ -14,12 +14,27 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $user_id = filter_input(INPUT_GET, 'user_id');
         if (!is_null($user_id)) {
-            $response=[
-                "data"=>$crud->read($user_id),
-                "status"=>200
-            ];
+            $user = $crud->read($user_id);
+            if($user){
+
+                $response=[
+                    "data"=>$user,
+                    "status"=>200
+                ];
+            }else{
+                $response=[
+                    'errors' => [
+                        [
+                        'status' => 404,
+                        'title' => 'user non trovato',
+                        'details' => $user_id
+                        ]
+                    ]
+                ];
+            }
             echo json_encode($response);
             
+        // else if($user_id){}
         }else{
             $response =[
                 "data"=> $crud->read(),
@@ -91,28 +106,27 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 $user = User::arrayToUser($request);
                 $last_id = $crud->create($user);
-                $user->user_id=$last_id;
-                // $response= [                    
-                //     "data"=> [
-                //         "type"=> "users",
-                //         'id' => $last_id,
-                //         'attributes' => $user
-                //     ]
-                // ];
+                // var_dump($last_id);
+                $user->user_id=$last_id["LAST_INSERT_ID()"];
 
-                // $user = (array) $user;
-                // unset($user['password']);
+                    $response=[
+                        'data'=> $user,
+                        'status' => 200
+                    ];
+                    echo json_encode($response);
 
-                // $user['user_id']= $last_id;
-                $response=[
-                    'data'=> $user,
-                    'status' => 200
-                ];
-                echo json_encode($response);
-            }catch(\Throwable $th) {
-                $response = responseError($th);
-                echo json_encode($response);
-            }
+                }catch(\Throwable $th) {
+                    $response = [
+                        'errors' => [
+                            [
+                                'status' => 422,
+                                'title' => 'formato non corretto',
+                                'details' => $th->getMessage()
+                            ]
+                        ]
+                    ];
+                    echo json_encode($response);
+                }
                 break;
 
 

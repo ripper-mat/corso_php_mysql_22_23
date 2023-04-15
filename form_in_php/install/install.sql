@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `provincia`
 --
 
-DROP TABLE IF EXISTS `province`;
+DROP TABLE IF EXISTS `provincia`;
 CREATE TABLE `province` (
   `provincia_id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
@@ -157,7 +157,7 @@ INSERT INTO `province` (`provincia_id`, `nome`, `sigla`, `regione_id`) VALUES
 -- Struttura della tabella `regione`
 --
 
-DROP TABLE IF EXISTS `regione`;
+DROP TABLE IF EXISTS `regioni`;
 CREATE TABLE `regione` (
   `regione_id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL
@@ -227,7 +227,7 @@ ADD UNIQUE (username);
 --
 -- Indici per le tabelle `regione`
 --
-ALTER TABLE `regioni`
+ALTER TABLE `regione`
   ADD PRIMARY KEY (`regione_id`);
 
 --
@@ -245,7 +245,7 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT per la tabella `regione`
 --
-ALTER TABLE `regioni`
+ALTER TABLE `regione`
   MODIFY `regione_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
