@@ -1,11 +1,12 @@
 
 
-
-function CardBase() {
+// scrivere come argomento le parentesi graffe equivale a fare una costante con quegli argomeni e metterla come argomento della funzione
+// si parla di destrutturazione
+function CardBase({titolo, testo}) {
     return (
     <div>
-        <h3>Titolo</h3>
-        <p>testo</p>
+        <h3>{titolo}</h3>
+        <p>{testo}</p>
     </div>
     )
 }

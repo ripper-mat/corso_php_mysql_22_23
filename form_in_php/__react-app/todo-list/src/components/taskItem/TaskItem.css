@@ -1,0 +1,12 @@
+.checked{
+    color: blue;
+}
+
+.done{
+    opacity: 30%;
+    text-decoration: line-through;
+}
+
+.upNext{
+    color: rgb(19, 206, 19);
+}
