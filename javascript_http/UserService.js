@@ -1,9 +1,16 @@
 const base_url = "http://localhost/corso_php/form_in_php/rest_api"
 
-export function getUser(){
-     return fetch(base_url+"/users.php").then(response=>response.json())
-};
+// export function getUser(){
+//      return fetch(base_url+"/users.php").then(response=>response.json())
+// };
 
+export async function getUser() {
+     // con await ogni riga deve aspettare la risposta di quella precedente
+     const response = await fetch(base_url + "/users.php")
+     const json = await response.json()
+     return json.data
+     // console.log(json)
+ }
 
 
 

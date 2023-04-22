@@ -1,8 +1,18 @@
 
 
-const TaskItem = props => {
+function TaskItem({nome_task, done}) {
     return(
-        <li className="done">Hit the gym</li>
+           
+        <li className={done ? 'done' : ''}>
+            <div className="lblNbtns">
+            <label className="labelTask">{nome_task} </label>
+            <div className="listBtn">
+            <button className="btn">Edit</button>
+            <button className="btn">Delete</button>
+            </div>
+            </div>
+        </li>
+            
     )
 }
 

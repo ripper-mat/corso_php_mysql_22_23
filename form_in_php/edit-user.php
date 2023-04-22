@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = User::arrayToUser($_POST);
         $crud = new UserCRUD;
         $crud->update($user, $_POST['user_id']);
-        var_dump($_POST);
+        // var_dump($_POST);
         //redirect
         header("location: index.php");
         }else{
             echo "Il form non è valido";
         }
     }else{
-        header("location: edit-user.php");
+        // header("location: edit-user.php");
     }
 
 

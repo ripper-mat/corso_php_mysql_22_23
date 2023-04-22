@@ -128,16 +128,3 @@ input {
 .employee_list {
     margin-left: 10px;
 }
-
-.checked{
-    color: blue;
-}
-
-.done{
-    /* opacity: 70%; */
-    text-decoration: line-through;
-}
-
-.upNext{
-    color: rgb(19, 206, 19);
-}

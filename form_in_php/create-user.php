@@ -49,8 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // print_r($_POST);
         echo "il form non è valido";
     }
-}
+    header("location: index.php");
 
+}
 
 
 ?>
@@ -209,4 +210,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       
         </section>
+        
     <?php require "./class/view/footer-view.php"?>
